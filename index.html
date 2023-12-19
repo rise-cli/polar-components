@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script
+            type="module"
+            src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://main.dcgr5ap5fl5bj.amplifyapp.com/style.css"
+        />
+    </head>
+    <body
+        class="px-10 py-10 flex flex-col items-center justify-center"
+        style="padding-top: 100px"
+    >
+        <div>
+            <div class="flex items-center mb-2">
+                <div class="h-6 w-6 bg-blue-300 mr-1"></div>
+                <div class="h-6 w-6 bg-blue-400 mr-1"></div>
+                <div class="h-6 w-6 bg-blue-500 mr-1"></div>
+                <h1 class="font-bold text-3xl">Polar Web Components</h1>
+            </div>
+            <div class="flex items-center">
+                <h2 class="font-bold text-lg" style="width: 100px">Button</h2>
+                <a class="block ml-2" href="./components/Button/component.js"
+                    >Code</a
+                >
+                <a class="block ml-2" href="./components/Button/story.html"
+                    >Example</a
+                >
+                <a class="block ml-2" href="./components/Button/test.html"
+                    >Test</a
+                >
+            </div>
+            <div class="flex items-center">
+                <h2 class="font-bold text-lg" style="width: 100px">Input</h2>
+                <a class="block ml-2" href="./components/Input/component.js"
+                    >Code</a
+                >
+                <a class="block ml-2" href="./components/Input/story.html"
+                    >Example</a
+                >
+                <a class="block ml-2" href="./components/Input/test.html"
+                    >Test</a
+                >
+            </div>
+
+            <h2 class="font-bold text-lg" style="margin-top: 40px">
+                NodeJS Build Script
+            </h2>
+            <zero-md>
+                <script type="text/markdown" id="md">
+                    ```js
+                    import fs from 'fs'
+
+                    async function main() {
+                        const componentList = [
+                            'https://url.com/components/Button/component.js',
+                            'https://url.com/components/Input/component.js'
+                        ]
+
+                        let result = ''
+                        for (x of componentList) {
+                            const code = await fetch(x)
+                            result = result + code
+                        }
+
+                        const path = process.cwd() + '/webcomponents.js'
+                        fs.writeFileSync(path, result)
+                    }
+
+                    main()
+                    ```
+                </script>
+            </zero-md>
+        </div>
+    </body>
+</html>
